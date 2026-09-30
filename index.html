@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ラクだAI nagoya｜AIツールを、仕事で使えるように</title>
+<meta name="description" content="名古屋の個人のお店・小さな会社向け。CodexやClaude Codeなどの話題のAIツールを、セットアップから伴走まで。今は無料のモニターを募集中です。">
+<style>
+:root{--navy:#0D1730;--navy2:#16244A;--paper:#F6F3EE;--paper2:#ECE6DB;--ink:#111A30;--sub:#5B6580;--warm:#FFC48A;--warm2:#FF9F6B;--green:#3BB582;--white:#fff}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:var(--ink);background:var(--paper);line-height:1.85;-webkit-text-size-adjust:100%}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+/* header */
+header{position:absolute;top:0;left:0;right:0;z-index:10}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{font-weight:900;font-size:18px;color:#fff;letter-spacing:.04em}
+.logo span{color:var(--warm);font-weight:700}
+.hbtn{color:#fff;text-decoration:none;font-weight:800;font-size:14px;padding:10px 20px;border:1.5px solid rgba(255,255,255,.4);border-radius:999px}
+/* hero */
+.hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:140px 0 96px}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55}
+.orb.a{width:420px;height:420px;background:#FF9F6B;right:-80px;top:-60px;opacity:.38}
+.orb.b{width:380px;height:380px;background:#5B6DFF;left:-120px;bottom:-140px;opacity:.35}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.pill{display:inline-block;font-weight:800;font-size:13.5px;letter-spacing:.08em;padding:7px 18px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);margin-bottom:26px;color:#FFE1C2}
+h1{font-size:clamp(38px,7.4vw,70px);line-height:1.2;font-weight:900;letter-spacing:-.02em}
+h1 em{font-style:normal;background:linear-gradient(90deg,var(--warm),var(--warm2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{margin-top:14px;font-size:clamp(15px,3.6vw,19px);font-weight:700;color:#FFE1C2;letter-spacing:.02em}
+.lead{margin-top:22px;font-size:clamp(15px,3.6vw,17.5px);font-weight:500;color:#C5CEE6;max-width:520px}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.btn{display:inline-block;padding:17px 32px;border-radius:999px;font-weight:900;font-size:16.5px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.main{background:linear-gradient(90deg,var(--warm),var(--warm2));color:#241300;box-shadow:0 12px 30px rgba(255,159,107,.35)}
+.btn.line{border:1.5px solid rgba(255,255,255,.45);color:#fff}
+.micro{margin-top:16px;font-size:13.5px;font-weight:600;color:#9FAACB}
+/* chat window (hero visual) */
+.cmp{display:grid;gap:12px}.cmp .col{border-radius:24px;padding:24px 26px}.cmp small{display:block;font-weight:800;letter-spacing:.1em;font-size:12px;margin-bottom:6px}.cmp b{display:block;font-size:20px;line-height:1.45;margin-bottom:10px}.cmp ul{list-style:none;padding:0;display:grid;gap:6px;font-weight:600;font-size:15px}.cmp li::before{content:"・"}.cmp .off{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#B5BFDA}.cmp .on{background:linear-gradient(135deg,#FFD9AE,#FF9F6B);color:#2A1500;box-shadow:0 30px 60px rgba(0,0,0,.35)}.cmp .on small{color:#7A3A00}.cmp .arrow{text-align:center;font-size:22px;color:#FFC48A;font-weight:900;line-height:1}.win{background:rgba(255,255,255,.96);color:var(--ink);border-radius:26px;box-shadow:0 40px 80px rgba(0,0,0,.4);overflow:hidden;transform:rotate(-1.6deg)}
+.win .top{display:flex;gap:7px;padding:15px 18px;background:#EEE9E0}
+.win .top i{width:11px;height:11px;border-radius:50%;background:#D5CCBA}
+.win .body{padding:22px;display:grid;gap:12px}
+.bub{max-width:90%;padding:13px 17px;border-radius:18px;font-weight:700;font-size:14.5px;line-height:1.65}
+.bub small{display:block;font-size:11px;letter-spacing:.12em;color:var(--sub);margin-bottom:3px}
+.bub.u{background:#F1F2F7;border-bottom-left-radius:5px}
+.bub.a{background:#E4F5EC;margin-left:auto;border-bottom-right-radius:5px}
+.chip{justify-self:end;background:var(--green);color:#fff;border-radius:999px;padding:9px 22px;font-weight:900;font-size:14.5px}
+.cap{margin-top:16px;font-size:14px;color:#FFE1C2;text-align:center;font-weight:800}
+/* sections */
+section{padding:104px 0}
+.eyebrow{font-weight:900;font-size:12.5px;letter-spacing:.24em;color:var(--warm2);margin-bottom:16px}
+h2{font-size:clamp(28px,5.4vw,44px);line-height:1.32;font-weight:900;letter-spacing:-.015em}
+.lead2{margin-top:18px;color:var(--sub);font-weight:500;font-size:17px;max-width:600px}
+.prob{margin-top:44px;border-top:1px solid var(--paper2)}
+.prob p{font-size:clamp(19px,4.2vw,27px);font-weight:800;line-height:1.55;padding:24px 4px;border-bottom:1px solid var(--paper2);display:flex;gap:18px;align-items:baseline}
+.prob p span{font-size:14px;color:var(--warm2);font-weight:900;letter-spacing:.1em}
+/* dark */
+.dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
+.dark .lead2{color:#B5BFDA}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
+.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:32px 28px}
+.step .n{font-size:46px;font-weight:900;line-height:1;color:var(--warm);letter-spacing:-.02em}
+.step h3{font-size:21px;margin:16px 0 8px;font-weight:900}
+.step p{color:#B5BFDA;font-weight:500;font-size:15.5px}
+/* list */
+.list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:42px}
+.item{display:flex;gap:18px;align-items:flex-start;background:#fff;border-radius:26px;padding:26px;border:1px solid var(--paper2)}
+.item b{display:block;font-size:19px;line-height:1.45;margin-bottom:2px}
+.item span{color:var(--sub);font-weight:500;font-size:15px}
+.ico{flex:none;width:44px;height:44px;border-radius:15px;background:var(--navy);color:var(--warm);display:grid;place-items:center;font-weight:900;font-size:18px}
+.tools{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.tools em{font-style:normal;font-weight:700;color:var(--sub);font-size:14px}
+.tools b{background:var(--navy);color:#fff;border-radius:999px;padding:8px 20px;font-size:15px}
+/* promise */
+.prom{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
+.prom div{display:flex;gap:14px;padding:20px 22px;border:1px solid rgba(255,255,255,.14);border-radius:20px;font-weight:600;color:#E3E9F8;background:rgba(255,255,255,.03)}
+.prom div::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900}
+.prom .no::before{content:"×";background:#66708F}
+/* guide */
+.guide{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:#fff;border-radius:30px;padding:30px;border:1px solid var(--paper2);margin-top:38px}
+.guide img{width:88px;height:88px;border-radius:50%;display:block}
+.guide p{font-weight:500;color:var(--sub)}
+.guide b{color:var(--ink)}
+/* faq */
+details{background:#fff;border-radius:20px;padding:20px 26px;margin-top:12px;border:1px solid var(--paper2)}
+summary{font-weight:800;font-size:17px;cursor:pointer}
+details p{margin-top:10px;color:var(--sub);font-weight:500}
+/* cta */
+.cta{position:relative;overflow:hidden;border-radius:40px;padding:72px 26px;text-align:center;color:#fff;background:var(--navy)}
+.cta .orb.a{width:340px;height:340px;right:-60px;top:-80px}
+.cta .orb.b{width:300px;height:300px;left:-80px;bottom:-100px}
+.cta>*{position:relative}
+.cta h2{font-size:clamp(28px,6vw,44px)}
+.cta p{margin-top:14px;font-weight:600;color:#C5CEE6}
+.cta .btns{justify-content:center}
+footer{padding:36px 0 110px;text-align:center;font-size:13px;color:var(--sub);font-weight:600}
+.fix{display:none}
+@media(max-width:820px){
+ section{padding:72px 0}
+ .hero{padding:110px 0 64px}
+ .hero .wrap{grid-template-columns:1fr;gap:44px}
+ .win{transform:none}
+ h1{font-size:33px}
+ .steps,.list,.prom{grid-template-columns:1fr}
+ .guide{grid-template-columns:1fr;text-align:center;justify-items:center}
+ .hbtn{display:none}
+ .fix{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(246,243,238,.96);border-top:1px solid var(--paper2)}
+ .fix a{display:block;text-align:center;background:linear-gradient(90deg,var(--warm),var(--warm2));color:#241300;font-weight:900;padding:15px;border-radius:999px;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="logo">ラクだAI <span>nagoya</span></span><a class="hbtn" href="#contact">無料で相談</a></div></header>
+
+<main>
+<div class="hero">
+<div class="orb a"></div><div class="orb b"></div>
+<div class="wrap">
+<div>
+<span class="pill">名古屋の個人のお店・小さな会社へ</span>
+<h1>AIツールを、<br>仕事で<em>使える</em>ように。</h1>
+<p class="sub">毎日の業務を、少しだけ楽に。</p>
+<p class="lead">CodexやClaude Codeなど、話題のAIツール。入れて終わりにせず、使いこなすまで、一緒に進めます。</p>
+<div class="btns"><a class="btn main" href="#contact">無料モニターに相談する</a><a class="btn line" href="#how">進め方を見る</a></div>
+<p class="micro">今は無料のモニターを募集中。お手伝いは無料です（AIツールの利用料は、別途かかります）。</p>
+</div>
+<div>
+<div class="cmp">
+<div class="col off"><small>ふつうのチャット</small><b>質問すると、答えが返る</b><ul><li>答えを、自分で写して使う</li><li>毎回、一から説明する</li></ul></div>
+<div class="arrow">→</div>
+<div class="col on"><small>Codex・Claude Code</small><b>あなたのパソコンの中で、作業を進める</b><ul><li>ファイルを読んで、書類や資料を作る</li><li>ルールを書いておけば、毎回それを読んで動く</li><li>確認してから、実行する</li></ul></div>
+</div>
+<p class="cap">だから、入れ方と使い方の準備が大事です。</p>
+</div>
+</div>
+</div>
+
+<section><div class="wrap">
+<div class="eyebrow">01　こんな状態、ありませんか</div>
+<h2>AIは、入れただけでは<br>使えるようになりません。</h2>
+<div class="prob">
+<p><span>A</span>気になるけれど、何から始めればいいか分からない。</p>
+<p><span>B</span>入れてみたけれど、結局、使いこなせていない。</p>
+<p><span>C</span>毎回、一から説明し直すのが面倒で、続かない。</p>
+</div>
+</div></section>
+
+<section id="how" class="dark"><div class="wrap">
+<div class="eyebrow">02　進め方</div>
+<h2>セットアップから、<br>伴走まで。</h2>
+<p class="lead2">使えるようになるまでを、一緒に進めます。</p>
+<div class="steps">
+<div class="step"><div class="n">01</div><h3>セットアップ</h3><p>インストールと初期設定。AIに触らせない範囲も、一緒に決めます。</p></div>
+<div class="step"><div class="n">02</div><h3>お仕事用のルール作り</h3><p>あなたのやり方を、AIが読める形にまとめます。</p></div>
+<div class="step"><div class="n">03</div><h3>使い慣れるまで、伴走</h3><p>実際の仕事を1つ、一緒にやります。困ったら、聞いてください。</p></div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<div class="eyebrow">03　お手伝いの内容</div>
+<h2>あなたの仕事で、<br>AIが動くところまで。</h2>
+<div class="list">
+<div class="item"><div class="ico">1</div><div><b>インストールと初期設定</b><span>パソコンで動く状態まで、一緒に準備します。</span></div></div>
+<div class="item"><div class="ico">2</div><div><b>安全の設定</b><span>触らせない場所、確認してから動く範囲を決めます。</span></div></div>
+<div class="item"><div class="ico">3</div><div><b>お仕事用のルール作り</b><span>お店・事務所のやり方を、AIが読める形にします。</span></div></div>
+<div class="item"><div class="ico">4</div><div><b>使い慣れるまでの伴走</b><span>質問はいつでもOK。実際の仕事で、一緒に使います。</span></div></div>
+</div>
+<div class="tools"><em>対象のツール</em><b>Codex</b><b>Claude Code</b><em>など。お仕事やご予算に合わせて選びます（ツールの利用料は別途かかります）</em></div>
+</div></section>
+
+<section class="dark"><div class="wrap">
+<div class="eyebrow">04　お約束</div>
+<h2>安心してご相談いただくために。</h2>
+<div class="prom">
+<div>AIが勝手に動かないよう、確認してから進める形にします</div>
+<div>パスワードは、お預かりしません</div>
+<div>売り込みや、その場での契約はしません</div>
+<div>モニター中、私のお手伝いは無料です。AIツールの利用料は、ご本人のお支払いです</div>
+<div>続ける場合の料金は、先にお伝えします。同意なしに費用は発生しません</div>
+<div class="no">売上が増える約束は、できません</div>
+<div class="no">お客様（お店のお客さん）の個人情報を扱う作業は、お受けしません</div>
+</div>
+</div></section>
+
+<section><div class="wrap">
+<div class="eyebrow">05　運営について</div>
+<h2>まだ実績はありません。<br>だから、1件ずつていねいに。</h2>
+<div class="guide"><img src="icon_640.png" alt="ラクダのキャラクター、らっくん"><p><b>ラクだAI nagoya</b>は、名古屋で活動しています。自分の仕事の管理を、AIで回しています。<br>最初は無料のモニターとして、1件ずつ取り組みます。案内役は、ラクダの「らっくん」です。</p></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap">
+<div class="eyebrow">06　よくあるご質問</div>
+<h2>よくあるご質問。</h2>
+<details><summary>パソコンが苦手でも大丈夫ですか？</summary><p>専門的な知識は要りません。むずかしいところは、一緒に進めます。</p></details>
+<details><summary>どんなAIツールを使いますか？</summary><p>CodexやClaude Codeなどです。お仕事やご予算に合わせて、一緒に選びます。ツールの利用料は、ご本人の契約になります。</p></details>
+<details><summary>費用は、かかりますか？</summary><p>モニター期間中、私のお手伝いは無料です。ただし、CodexやClaude Codeなどのツールそのものの利用料は、ご本人の契約・お支払いになります。金額は、契約の前にお伝えします。続ける場合のお手伝いの料金も、事前にお伝えし、ご納得いただいてからにします。</p></details>
+<details><summary>相談した内容は、どうなりますか？</summary><p>ご相談の内容は、お手伝いの目的以外には使わず、第三者に渡しません。</p></details>
+</div></section>
+
+<section id="contact" style="padding-top:0"><div class="wrap">
+<div class="cta">
+<div class="orb a"></div><div class="orb b"></div>
+<h2>まずは、15分だけ<br>お話しませんか。</h2>
+<p>売り込みはしません。ご都合が合わなければ、そのままで大丈夫です。</p>
+<div class="btns">
+
+<a class="btn main" href="https://lin.ee/66SwZs1">公式LINEで相談する</a>
+<a class="btn line" href="mailto:rakudaai.project@gmail.com">メールで相談する</a>
+</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">ラクだAI nagoya<br>ご相談の内容は、お手伝いの目的以外には使いません。</div></footer>
+<div class="fix"><a href="#contact">無料モニターに相談する</a></div>
+</body>
+</html>
