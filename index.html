@@ -3,259 +3,233 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ラクだAI nagoya｜AIツールを、仕事で使えるように</title>
-<meta name="description" content="名古屋の個人のお店・小さな会社向け。CodexやClaude Codeなどの話題のAIツールを、セットアップから伴走まで。今は無料のモニターを募集中です。">
-<style>
-:root{--navy:#0D1730;--navy2:#16244A;--paper:#F6F3EE;--paper2:#ECE6DB;--ink:#111A30;--sub:#5B6580;--warm:#FFC48A;--warm2:#FF9F6B;--green:#3BB582;--white:#fff}
-*{box-sizing:border-box;margin:0}
-html{scroll-behavior:smooth}
-body{font-family:'Hiragino Sans','Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;color:var(--ink);background:var(--paper);line-height:1.85;-webkit-text-size-adjust:100%}
-.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
-a{color:inherit}
-/* header */
-header{position:absolute;top:0;left:0;right:0;z-index:10}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-.logo{font-weight:900;font-size:18px;color:#fff;letter-spacing:.04em}
-.logo span{color:var(--warm);font-weight:700}
-.hbtn{color:#fff;text-decoration:none;font-weight:800;font-size:14px;padding:10px 20px;border:1.5px solid rgba(255,255,255,.4);border-radius:999px}
-/* hero */
-.hero{position:relative;overflow:hidden;background:var(--navy);color:#fff;padding:140px 0 96px}
-.orb{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55}
-.orb.a{width:420px;height:420px;background:#FF9F6B;right:-80px;top:-60px;opacity:.38}
-.orb.b{width:380px;height:380px;background:#5B6DFF;left:-120px;bottom:-140px;opacity:.35}
-.hero .wrap{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
-.pill{display:inline-block;font-weight:800;font-size:13.5px;letter-spacing:.08em;padding:7px 18px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);margin-bottom:26px;color:#FFE1C2}
-h1{font-size:clamp(38px,7.4vw,70px);line-height:1.2;font-weight:900;letter-spacing:-.02em}
-h1 em{font-style:normal;background:linear-gradient(90deg,var(--warm),var(--warm2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{margin-top:14px;font-size:clamp(15px,3.6vw,19px);font-weight:700;color:#FFE1C2;letter-spacing:.02em}
-.lead{margin-top:22px;font-size:clamp(15px,3.6vw,17.5px);font-weight:500;color:#C5CEE6;max-width:520px}
-.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.btn{display:inline-block;padding:17px 32px;border-radius:999px;font-weight:900;font-size:16.5px;text-decoration:none;transition:transform .15s,box-shadow .15s}
-.btn:hover{transform:translateY(-2px)}
-.btn.main{background:linear-gradient(90deg,var(--warm),var(--warm2));color:#241300;box-shadow:0 12px 30px rgba(255,159,107,.35)}
-.btn.line{border:1.5px solid rgba(255,255,255,.45);color:#fff}
-.micro{margin-top:16px;font-size:13.5px;font-weight:600;color:#9FAACB}
-/* chat window (hero visual) */
-.cmp{display:grid;gap:12px}.cmp .col{border-radius:24px;padding:24px 26px}.cmp small{display:block;font-weight:800;letter-spacing:.1em;font-size:12px;margin-bottom:6px}.cmp b{display:block;font-size:20px;line-height:1.45;margin-bottom:10px}.cmp ul{list-style:none;padding:0;display:grid;gap:6px;font-weight:600;font-size:15px}.cmp li::before{content:"・"}.cmp .off{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);color:#B5BFDA}.cmp .on{background:linear-gradient(135deg,#FFD9AE,#FF9F6B);color:#2A1500;box-shadow:0 30px 60px rgba(0,0,0,.35)}.cmp .on small{color:#7A3A00}.cmp .arrow{text-align:center;font-size:22px;color:#FFC48A;font-weight:900;line-height:1}.win{background:rgba(255,255,255,.96);color:var(--ink);border-radius:26px;box-shadow:0 40px 80px rgba(0,0,0,.4);overflow:hidden;transform:rotate(-1.6deg)}
-.win .top{display:flex;gap:7px;padding:15px 18px;background:#EEE9E0}
-.win .top i{width:11px;height:11px;border-radius:50%;background:#D5CCBA}
-.win .body{padding:22px;display:grid;gap:12px}
-.bub{max-width:90%;padding:13px 17px;border-radius:18px;font-weight:700;font-size:14.5px;line-height:1.65}
-.bub small{display:block;font-size:11px;letter-spacing:.12em;color:var(--sub);margin-bottom:3px}
-.bub.u{background:#F1F2F7;border-bottom-left-radius:5px}
-.bub.a{background:#E4F5EC;margin-left:auto;border-bottom-right-radius:5px}
-.chip{justify-self:end;background:var(--green);color:#fff;border-radius:999px;padding:9px 22px;font-weight:900;font-size:14.5px}
-.cap{margin-top:16px;font-size:14px;color:#FFE1C2;text-align:center;font-weight:800}
-/* sections */
-section{padding:104px 0}
-.eyebrow{font-weight:900;font-size:12.5px;letter-spacing:.24em;color:var(--warm2);margin-bottom:16px}
-h2{font-size:clamp(28px,5.4vw,44px);line-height:1.32;font-weight:900;letter-spacing:-.015em}
-.lead2{margin-top:18px;color:var(--sub);font-weight:500;font-size:17px;max-width:600px}
-.prob{margin-top:44px;border-top:1px solid var(--paper2)}
-.prob p{font-size:clamp(19px,4.2vw,27px);font-weight:800;line-height:1.55;padding:24px 4px;border-bottom:1px solid var(--paper2);display:flex;gap:18px;align-items:baseline}
-.prob p span{font-size:14px;color:var(--warm2);font-weight:900;letter-spacing:.1em}
-/* dark */
-.dark{background:var(--navy);color:#fff;position:relative;overflow:hidden}
-.dark .lead2{color:#B5BFDA}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:48px}
-.step{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:28px;padding:32px 28px}
-.step .n{font-size:46px;font-weight:900;line-height:1;color:var(--warm);letter-spacing:-.02em}
-.step h3{font-size:21px;margin:16px 0 8px;font-weight:900}
-.step p{color:#B5BFDA;font-weight:500;font-size:15.5px}
-/* list */
-.list{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:42px}
-.item{display:flex;gap:18px;align-items:flex-start;background:#fff;border-radius:26px;padding:26px;border:1px solid var(--paper2)}
-.item b{display:block;font-size:19px;line-height:1.45;margin-bottom:2px}
-.item span{color:var(--sub);font-weight:500;font-size:15px}
-.ico{flex:none;width:44px;height:44px;border-radius:15px;background:var(--navy);color:var(--warm);display:grid;place-items:center;font-weight:900;font-size:18px}
-.tools{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-.tools em{font-style:normal;font-weight:700;color:var(--sub);font-size:14px}
-.tools b{background:var(--navy);color:#fff;border-radius:999px;padding:8px 20px;font-size:15px}
-/* promise */
-.prom{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:40px}
-.prom div{display:flex;gap:14px;padding:20px 22px;border:1px solid rgba(255,255,255,.14);border-radius:20px;font-weight:600;color:#E3E9F8;background:rgba(255,255,255,.03)}
-.prom div::before{content:"✓";flex:none;width:26px;height:26px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:14px;font-weight:900}
-.prom .no::before{content:"×";background:#66708F}
-/* guide */
-.guide{display:grid;grid-template-columns:auto 1fr;gap:26px;align-items:center;background:#fff;border-radius:30px;padding:30px;border:1px solid var(--paper2);margin-top:38px}
-.guide img{width:88px;height:88px;border-radius:50%;display:block}
-.guide p{font-weight:500;color:var(--sub)}
-.guide b{color:var(--ink)}
-/* faq */
-details{background:#fff;border-radius:20px;padding:20px 26px;margin-top:12px;border:1px solid var(--paper2)}
-summary{font-weight:800;font-size:17px;cursor:pointer}
-details p{margin-top:10px;color:var(--sub);font-weight:500}
-/* cta */
-.cta{position:relative;overflow:hidden;border-radius:40px;padding:44px 26px 52px;text-align:center;color:#fff;background:var(--navy)}
-.cta .orb.a{width:340px;height:340px;right:-60px;top:-80px}
-.cta .orb.b{width:300px;height:300px;left:-80px;bottom:-100px}
-.cta>*:not(.orb){position:relative}
-.cta h2{font-size:clamp(28px,6vw,44px)}
-.cta p{margin-top:14px;font-weight:600;color:#C5CEE6}
-.cta .btns{justify-content:center}
-footer{padding:36px 0 110px;text-align:center;font-size:13px;color:var(--sub);font-weight:600}
-.fix{display:none}
-@media(max-width:820px){
- section{padding:72px 0}
- .hero{padding:110px 0 64px}
- .hero .wrap{grid-template-columns:1fr;gap:44px}
- .win{transform:none}
- h1{font-size:33px}
- .steps,.list,.prom{grid-template-columns:1fr}
- .guide{grid-template-columns:1fr;text-align:center;justify-items:center}
- .cta{padding:34px 22px 40px;border-radius:30px}
- .hbtn{display:none}
- .fix{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:rgba(246,243,238,.96);border-top:1px solid var(--paper2)}
- .fix a{display:block;text-align:center;background:linear-gradient(90deg,var(--warm),var(--warm2));color:#241300;font-weight:900;padding:15px;border-radius:999px;text-decoration:none}
-}
-</style>
+<meta name="robots" content="index,follow">
+<title>ラクだAI nagoya｜毎日の手作業を、ひとつ減らす</title>
+<meta name="description" content="名古屋のサロン・個人店向け。予約の転記や売上集計など、毎日の手作業を1つ選び、自動で回る小さな仕組みにします。">
+<link rel="canonical" href="https://rakudaai-nagoya.github.io/">
+<link rel="icon" href="icon_640.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="ラクだAI nagoya｜毎日の手作業を、ひとつ減らす">
+<meta property="og:description" content="名古屋のサロン・個人店向け。予約の転記や売上集計など、毎日の手作業を1つ選び、自動で回る小さな仕組みにします。">
+<meta property="og:image" content="https://rakudaai-nagoya.github.io/icon_640.png">
+<meta property="og:url" content="https://rakudaai-nagoya.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style-v2.css">
 </head>
 <body>
-<header><div class="wrap"><span class="logo">ラクだAI <span>nagoya</span></span><a class="hbtn" href="#contact">無料で相談</a></div></header>
+<a class="skip-link" href="#main">本文へ移動</a>
 
-<main>
-<div class="hero">
-<div class="orb a"></div><div class="orb b"></div>
-<div class="wrap">
-<div>
-<span class="pill">名古屋の個人・お店・小さな会社へ</span>
-<h1>AIツールを、<br>仕事で<em>使える</em>ように。</h1>
-<p class="sub">毎日の手作業を、1つ、自動に。</p>
-<p class="lead">予約の転記、見積書づくり、売上の集計。毎回やっている作業を1つ選んで、自動で回る形にします。CodexやClaude Codeなどの導入から、使い始めるところまで、一緒に進めます。</p>
-<div class="btns"><a class="btn main" href="#contact">無料モニターに相談する</a><a class="btn line" href="#how">進め方を見る</a></div>
-<p class="micro">今は無料のモニターを募集中（先着3件）。お手伝いは無料です（AIツールの利用料は、別途かかります）。</p>
-</div>
-<div>
-<div class="cmp">
-<div class="col off"><small>ふつうのチャット</small><b>質問すると、答えが返る</b><ul><li>答えを、自分で写して使う</li><li>毎回、一から説明する</li></ul></div>
-<div class="arrow">→</div>
-<div class="col on"><small>Codex・Claude Code</small><b>あなたのパソコンの中で、作業を進める</b><ul><li>ファイルを読んで、書類や資料を作る</li><li>ルールを書いておけば、毎回それを読んで動く</li><li>確認してから、実行する</li></ul></div>
-</div>
-<p class="cap">だから、入れ方と使い方の準備が大事です。</p>
-</div>
-</div>
-</div>
+<header class="site-header">
+  <a class="brand" href="#top" aria-label="ラクだAI nagoya トップ">
+    <img src="icon_640.png" width="44" height="44" alt="">
+    <span>ラクだAI<small>NAGOYA</small></span>
+  </a>
+  <nav aria-label="ページ内ナビゲーション">
+    <a href="#examples">できること</a>
+    <a href="#flow">進め方</a>
+    <a class="nav-cta" href="#contact">無料で相談する</a>
+  </nav>
+</header>
 
-<section><div class="wrap">
-<div class="eyebrow">01　こんな状態、ありませんか</div>
-<h2>AIは、入れただけでは<br>使えるようになりません。</h2>
-<div class="prob">
-<p><span>A</span>気になるけれど、何から始めればいいか分からない。</p>
-<p><span>B</span>入れてみたけれど、結局、使いこなせていない。</p>
-<p><span>C</span>毎回、一から説明し直すのが面倒で、続かない。</p>
-</div>
-</div></section>
+<main id="main">
+  <section class="hero" id="top">
+    <div class="hero-shape shape-one" aria-hidden="true"></div>
+    <div class="hero-shape shape-two" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">名古屋のサロン・個人店向け</p>
+        <h1>毎日の手作業を、<br><em>ひとつ減らす。</em></h1>
+        <p class="hero-lead">予約の転記、フォローする人の確認、売上の集計。いつもの作業を聞いて、<strong>自動で回る小さな仕組み</strong>を一緒につくります。</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://lin.ee/66SwZs1" target="_blank" rel="noopener">LINEで減らせる作業を相談する</a>
+          <a class="button button-secondary" href="mailto:rakudaai.project@gmail.com?subject=%E3%83%A9%E3%82%AF%E3%81%A0AI%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87&amp;body=%E7%9B%B8%E8%AB%87%E5%B8%8C%E6%9C%9B">メールで相談する</a>
+        </div>
+        <p class="hero-note">先着3件・実務合計3時間まで無料／売り込みや、その場での契約はしません</p>
+      </div>
 
-<section id="how" class="dark"><div class="wrap">
-<div class="eyebrow">02　進め方</div>
-<h2>セットアップから、<br>伴走まで。</h2>
-<p class="lead2">使えるようになるまでを、一緒に進めます。</p>
-<div class="steps">
-<div class="step"><div class="n">01</div><h3>セットアップ</h3><p>インストールと初期設定。AIに触らせない範囲も、一緒に決めます。</p></div>
-<div class="step"><div class="n">02</div><h3>お仕事用のルール作り</h3><p>あなたのやり方を、AIが読める形にまとめます。</p></div>
-<div class="step"><div class="n">03</div><h3>手作業を1つ、自動に</h3><p>ヒアリングで選んだ作業を、一緒に作って使い始めます。困ったら、聞いてください。</p></div>
-</div>
-</div></section>
+      <div class="hero-visual" aria-label="予約作業を自動化するイメージ">
+        <div class="rakku-bubble">
+          <img src="icon_640.png" width="112" height="112" alt="ラクだAIの案内役、らっくん">
+          <p>その作業、<br><strong>毎回やらなくていい形</strong>に<br>できるかもしれません。</p>
+        </div>
+        <div class="workflow-card">
+          <p class="card-label">たとえば、予約の管理</p>
+          <div class="workflow-row is-before"><span>いま</span><p>メールを開く → 台帳へ転記 → 明日の予約を探す</p></div>
+          <div class="workflow-arrow" aria-hidden="true">↓</div>
+          <div class="workflow-row is-after"><span>これから</span><p>予約メール → <strong>台帳に自動で追加</strong> → 前日の一覧が届く</p></div>
+          <small>最後は必ず、ご本人が確認して使い始めます。</small>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="menu"><div class="wrap">
-<div class="eyebrow">自動にできる作業の例</div>
-<h2>毎回やっている作業を、<br>仕組みにします。</h2>
-<p class="lead2">どれを自動にするかは、最初のヒアリングで、いちばん時間を取られている作業を一緒に選びます。</p>
-<div class="list">
-<div class="item"><div class="ico">1</div><div><b>予約・問い合わせの台帳（サロン・お店）</b><span>届いた予約メールが、自動で表にたまる。前日の予約一覧も届く。</span></div></div>
-<div class="item"><div class="ico">2</div><div><b>お客様のフォロー通知（サロン・お店）</b><span>来店日から○日後に連絡する人を、毎朝まとめてお知らせ。</span></div></div>
-<div class="item"><div class="ico">3</div><div><b>売上・来店の月次集計（サロン・小売）</b><span>売上のデータを置くだけで、月ごとの集計や売れ筋の表が更新。</span></div></div>
-<div class="item"><div class="ico">4</div><div><b>在庫の不足お知らせ（小売）</b><span>在庫が基準を下回ったら、メールでお知らせ。</span></div></div>
-<div class="item"><div class="ico">5</div><div><b>見積書・請求書の自動作成（製造・工務店・小さな会社）</b><span>表に1回入力するだけで、PDFとメールの下書きまで進む。</span></div></div>
-<div class="item"><div class="ico">6</div><div><b>見積の追客管理（製造・工務店・小さな会社）</b><span>返事のない見積を、毎朝まとめてお知らせ。</span></div></div>
-<div class="item"><div class="ico">7</div><div><b>注文書・図面の読み取り（製造・工務店・小さな会社）</b><span>PDFから品名・数量・納期を拾って台帳へ。確定は、必ず人が確認します。</span></div></div>
-</div>
-<p class="lead2" style="margin-top:14px;font-size:15px">自動で送信や支払いはしません。確認してから使い始めます。Googleのツール（スプレッドシート・Gmail・カレンダー）が中心です。</p>
-</div></section>
+  <section class="fact-strip" aria-label="無料モニター概要">
+    <div><strong>3件</strong><span>先着の無料枠</span></div>
+    <div><strong>合計3時間</strong><span>実務の目安</span></div>
+    <div><strong>2週間</strong><span>終了後の質問対応</span></div>
+    <div><strong>3区</strong><span>港・熱田・中川は訪問可</span></div>
+  </section>
 
-<section><div class="wrap">
-<div class="eyebrow">03　お手伝いの内容</div>
-<h2>あなたの仕事で、<br>AIが動くところまで。</h2>
-<div class="list">
-<div class="item"><div class="ico">1</div><div><b>インストールと初期設定</b><span>パソコンで動く状態まで、一緒に準備します。</span></div></div>
-<div class="item"><div class="ico">2</div><div><b>安全の設定</b><span>触らせない場所、確認してから動く範囲を決めます。</span></div></div>
-<div class="item"><div class="ico">3</div><div><b>お仕事用のルール作り</b><span>お店・事務所のやり方を、AIが読める形にします。</span></div></div>
-<div class="item"><div class="ico">4</div><div><b>手作業を1つ、自動に</b><span>ヒアリングで選んだ作業を、一緒に作って使い始めます。質問はいつでもOK。</span></div></div>
-</div>
-<div class="tools"><em>対象のツール</em><b>Codex</b><b>Claude Code</b><em>など。お仕事やご予算に合わせて選びます（ツールの利用料は別途かかります）</em></div>
-</div></section>
+  <section class="section problem-section">
+    <div class="container split-heading">
+      <div>
+        <p class="eyebrow">こんな手作業、ありませんか</p>
+        <h2>1回は数分でも、<br>毎日だと重い。</h2>
+      </div>
+      <div class="problem-intro">
+        <p>忙しい日は後回しになり、落ち着いた時間にまとめて処理する。小さな手作業ほど、気づかないうちに時間と集中力を使います。</p>
+        <p>新しい大きなシステムを入れる前に、まず1つだけ減らします。</p>
+      </div>
+    </div>
+    <div class="container pain-grid">
+      <article><span>01</span><h3>予約メールを表へ写している</h3><p>名前、日時、メニューを毎回コピーしている。</p></article>
+      <article><span>02</span><h3>フォローする人を探している</h3><p>前回来店日を見ながら、連絡する相手を拾っている。</p></article>
+      <article><span>03</span><h3>月末に売上を集計している</h3><p>CSVやレジの数字を、別の表へまとめ直している。</p></article>
+    </div>
+  </section>
 
-<section class="dark"><div class="wrap">
-<div class="eyebrow">04　お約束</div>
-<h2>安心してご相談いただくために。</h2>
-<div class="prom">
-<div>AIが勝手に動かないよう、確認してから進める形にします</div>
-<div>パスワードは、お預かりしません</div>
-<div>売り込みや、その場での契約はしません</div>
-<div>モニター中、私のお手伝いは無料です。AIツールの利用料は、ご本人のお支払いです</div>
-<div>続ける場合の料金は、先にお伝えします。同意なしに費用は発生しません</div>
-<div>お客様（お店のお客さん）の個人情報は、お客様ご自身のアカウントの中で、必要な分だけ扱います（私のパソコンには保存しません）</div>
-<div class="no">売上が増える約束は、できません</div>
+  <section class="section examples-section" id="examples">
+    <div class="container section-heading">
+      <p class="eyebrow">できることの例</p>
+      <h2>「便利そう」ではなく、<br>実際の仕事を1つラクに。</h2>
+      <p>まず、いちばん時間を取られている作業を聞きます。今あるGoogleの道具を中心に、小さく始めます。</p>
+    </div>
+    <div class="container example-grid">
+      <article>
+        <div class="example-number">A</div>
+        <p class="example-for">サロン・予約制のお店</p>
+        <h3>予約メールを、自動で台帳へ。</h3>
+        <p>届いた通知から日時・名前・メニューを表へ追加。前日の予約一覧も自分へ届く形にできます。</p>
+        <ul><li>転記の抜けを減らす</li><li>明日の予定を探さない</li></ul>
+      </article>
+      <article>
+        <div class="example-number">B</div>
+        <p class="example-for">リピートのあるお店</p>
+        <h3>フォローする人を、毎朝お知らせ。</h3>
+        <p>来店日をもとに、そろそろ連絡したいお客様を一覧にして、自分へ知らせる形にできます。</p>
+        <ul><li>連絡漏れを防ぐ</li><li>対象者を探す時間を減らす</li></ul>
+      </article>
+      <article>
+        <div class="example-number">C</div>
+        <p class="example-for">売上を振り返りたいお店</p>
+        <h3>売上データを置けば、集計を更新。</h3>
+        <p>レジや予約サイトのCSVから、月別・曜日別・メニュー別の表を更新する形にできます。</p>
+        <ul><li>毎月の集計を短くする</li><li>売れ筋を見つけやすくする</li></ul>
+      </article>
+    </div>
+    <p class="container examples-note">使用例：Googleスプレッドシート、Gmail、Googleカレンダー、Google Apps Script。必要なところだけAIを使います。</p>
+  </section>
 
-</div>
-</div></section>
+  <section class="section flow-section" id="flow">
+    <div class="container flow-layout">
+      <div class="flow-copy">
+        <p class="eyebrow">進め方</p>
+        <h2>話を聞くところから、<br>使い始めるところまで。</h2>
+        <p>AIの知識は必要ありません。いまのやり方を見せてもらい、負担が減る形を一緒に確認します。</p>
+      </div>
+      <ol class="flow-list">
+        <li><b>1</b><div><h3>いつもの作業を聞く</h3><p>何を、どのくらいの頻度で、何分かけているかを確認します。</p></div></li>
+        <li><b>2</b><div><h3>減らす作業を1つ決める</h3><p>3時間の範囲で試せるものを選び、できること・できないことを先に伝えます。</p></div></li>
+        <li><b>3</b><div><h3>小さな仕組みをつくる</h3><p>お客様ご自身のアカウント内で、動きと確認方法を一緒につくります。</p></div></li>
+        <li><b>4</b><div><h3>本人が確認して使い始める</h3><p>勝手に送信・確定はしません。ご本人が確認できる形でお渡しします。</p></div></li>
+      </ol>
+    </div>
+  </section>
 
-<section id="monitor"><div class="wrap">
-<div class="eyebrow">05　無料モニターについて</div>
-<h2>先着3件、<br>無料でお手伝いします。</h2>
-<p class="lead2">実務は、合計3時間ほどが目安です。何回かに分けても大丈夫です。</p>
-<div class="list">
-<div class="item"><div class="ico">○</div><div><b>無料に含まれるもの</b><span>事前ヒアリング／AIツールをまだ使っていない方：セットアップ（1台のパソコン・1つのAIツール）が中心＋小さな自動化を1つ／すでに使っている方：ヒアリングで選んだ作業を1つ改善・自動化／終わったあとの質問対応</span></div></div>
-<div class="item"><div class="ico">×</div><div><b>含まれないもの</b><span>AIツールの利用料／複数台・複数人へのセットアップ／複数の自動化・大規模なシステム開発</span></div></div>
-</div>
-<div class="tools"><em>ご相談の方法は、お選びいただけます</em><b>直接会う</b><b>メール</b><b>リモート</b><b>LINE</b></div>
-<p class="lead2" style="margin-top:14px;font-size:15px">訪問は、名古屋市の港区・熱田区・中川区まで（交通費はいただきません）。それ以外の地域は、リモート・メール・LINEで対応します。</p>
-<p class="lead2" style="margin-top:10px;font-size:15px">お願いしたいこと：終わったあとの、簡単な感想。事例としての掲載は、許可をいただけた場合だけです。</p>
-</div></section>
+  <section class="section safety-section">
+    <div class="container">
+      <div class="safety-heading">
+        <p class="eyebrow">安心して相談するために</p>
+        <h2>任せきりにしない。<br>分からないまま進めない。</h2>
+      </div>
+      <div class="promise-grid">
+        <article><span>✓</span><div><h3>パスワードは預かりません</h3><p>ログインや契約は、ご本人の操作で進めます。</p></div></article>
+        <article><span>✓</span><div><h3>勝手に送信・支払いしません</h3><p>確認してから進む形を基本にします。</p></div></article>
+        <article><span>✓</span><div><h3>個人情報を持ち帰りません</h3><p>必要な情報は、お客様ご自身のアカウント内で扱います。</p></div></article>
+        <article><span>✓</span><div><h3>合意なしに費用は発生しません</h3><p>無料の範囲を超える時は、先に説明・見積りをします。</p></div></article>
+      </div>
+    </div>
+  </section>
 
-<section id="price"><div class="wrap">
-<div class="eyebrow">06　料金</div>
-<h2>無料の範囲を超える場合の、<br>料金の目安です。</h2>
-<p class="lead2">すべて、事前にお見積り・ご説明して、ご納得いただいてからです。合意なしに、費用は発生しません。</p>
-<div class="list">
-<div class="item"><div class="ico">¥</div><div><b>追加の作業　1時間 3,000円＋税</b><span>30分単位。無料の3時間を超えた分です。</span></div></div>
-<div class="item"><div class="ico">¥</div><div><b>追加の自動化・システム構築など</b><span>内容に応じて、上限つきのお見積りを、着手前にお出しします。お見積りは無料です。</span></div></div>
-<div class="item"><div class="ico">月</div><div><b>月額の伴走　ライト 8,000円＋税</b><span>質問対応のみ（月10往復まで。返信は2営業日以内が目安）。</span></div></div>
-<div class="item"><div class="ico">月</div><div><b>月額の伴走　スタンダード 15,000円＋税</b><span>ライトの内容＋月1回60分の作業＋お仕事用ルールの見直し。</span></div></div>
-</div>
-<p class="lead2" style="margin-top:22px;font-size:15px">※AIツール（Codex・Claude Codeなど）の利用料は、別途、お客様のご負担です。金額の目安は、ご相談の中でご説明します。</p>
-</div></section>
+  <section class="section offer-section" id="monitor">
+    <div class="container offer-card">
+      <div class="offer-copy">
+        <p class="eyebrow">無料モニター｜先着3件</p>
+        <h2>まず1つ、<br>手作業を減らしてみる。</h2>
+        <p>サービス改善のため、実務合計3時間まで無料でお手伝いします。終了後、簡単な感想にご協力ください。</p>
+        <div class="offer-actions">
+          <a class="button button-primary" href="https://lin.ee/66SwZs1" target="_blank" rel="noopener">LINEで無料相談する</a>
+          <a class="text-link" href="mailto:rakudaai.project@gmail.com?subject=%E3%83%A9%E3%82%AF%E3%81%A0AI%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87&amp;body=%E7%9B%B8%E8%AB%87%E5%B8%8C%E6%9C%9B">メールで相談する →</a>
+        </div>
+      </div>
+      <div class="offer-detail">
+        <dl>
+          <div><dt>無料の範囲</dt><dd>実務 合計3時間まで</dd></div>
+          <div><dt>終了後</dt><dd>2週間の質問対応</dd></div>
+          <div><dt>訪問</dt><dd>港区・熱田区・中川区</dd></div>
+          <div><dt>その他地域</dt><dd>リモート・LINE・メール</dd></div>
+        </dl>
+        <p>AIツールの利用料はお客様負担です。複数台・複数人への設定、大規模な開発、成果保証は無料枠に含みません。</p>
+      </div>
+    </div>
+  </section>
 
-<section><div class="wrap">
-<div class="eyebrow">07　運営について</div>
-<h2>まだ実績はありません。<br>だから、1件ずつていねいに。</h2>
-<div class="guide"><img src="data:image/jpeg;base64,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" alt="ラクダのキャラクター、らっくん" width="88" height="88"><p><b>ラクだAI nagoya</b>は、名古屋で活動しています。自分の仕事の管理を、AIで回しています。<br>最初は無料のモニターとして、1件ずつ取り組みます。案内役は、ラクダの「らっくん」です。</p></div>
-</div></section>
+  <section class="section guide-section">
+    <div class="container guide-card">
+      <img src="icon_640.png" width="172" height="172" loading="lazy" alt="ラクだAIの案内役、らっくん">
+      <div>
+        <p class="eyebrow">ラクだAI nagoyaについて</p>
+        <h2>むずかしい言葉を、<br>使わない案内役。</h2>
+        <p>名古屋で、小さなお店や個人事業のAI導入をお手伝いしています。まだお客様への支援実績はありません。だからこそ最初の3件は無料で、かかった時間と止まったところを記録し、1件ずつ改善します。</p>
+        <p class="guide-note">キャラクターは、らっくん。説明はやさしく、仕組みは堅実に進めます。</p>
+      </div>
+    </div>
+  </section>
 
-<section style="padding-top:0"><div class="wrap">
-<div class="eyebrow">08　よくあるご質問</div>
-<h2>よくあるご質問。</h2>
-<details><summary>パソコンが苦手でも大丈夫ですか？</summary><p>専門的な知識は要りません。むずかしいところは、一緒に進めます。</p></details>
-<details><summary>どんなAIツールを使いますか？</summary><p>CodexやClaude Codeなどです。お仕事やご予算に合わせて、一緒に選びます。ツールの利用料は、ご本人の契約になります。</p></details>
-<details><summary>費用は、かかりますか？</summary><p>先着3件のモニター期間中、私のお手伝いは無料です（実務は合計3時間が目安）。ただし、CodexやClaude Codeなどのツールそのものの利用料は、お客様のご負担です。金額は、契約の前にお伝えします。無料の範囲を超える場合の料金は、上の「料金」をご覧ください。事前にご説明し、ご納得いただいてからにします。</p></details>
-<details><summary>相談した内容は、どうなりますか？</summary><p>ご相談の内容は、お手伝いの目的以外には使わず、第三者に渡しません。</p></details>
-</div></section>
+  <section class="section pricing-section" id="price">
+    <div class="container pricing-layout">
+      <div><p class="eyebrow">無料枠を超える場合</p><h2>料金は、始める前に。</h2><p>必要な場合だけ、内容と上限を先にお伝えします。断っても費用はかかりません。</p></div>
+      <div class="price-list">
+        <article><span>追加作業</span><strong>3,000円＋税／1時間</strong><p>30分単位。無料の合計3時間を超えた分。</p></article>
+        <article><span>月額ライト</span><strong>8,000円＋税／月</strong><p>質問対応 月10往復まで。</p></article>
+        <article><span>月額スタンダード</span><strong>15,000円＋税／月</strong><p>ライト＋月1回60分の作業・ルール見直し。</p></article>
+      </div>
+    </div>
+  </section>
 
-<section id="contact" style="padding-top:0"><div class="wrap">
-<div class="cta">
-<div class="orb a"></div><div class="orb b"></div>
-<h2>まずは、お気軽に<br>ご相談ください。</h2>
-<p>売り込みはしません。連絡は、LINE・メール・直接会うなど、お好きな方法で。</p>
-<div class="btns">
+  <section class="section faq-section">
+    <div class="container faq-layout">
+      <div><p class="eyebrow">よくある質問</p><h2>相談前の不安に<br>お答えします。</h2></div>
+      <div class="faq-list">
+        <details><summary>パソコンが苦手でも大丈夫ですか？</summary><p>はい。専門知識は必要ありません。操作は画面を見ながら一緒に進め、ご本人が確認できる状態にします。</p></details>
+        <details><summary>何を自動にできるか分かりません。</summary><p>最初に普段の流れを聞き、時間がかかる作業を整理します。自動化に向かない場合も、そのままお伝えします。</p></details>
+        <details><summary>ChatGPTの使い方を教えるサービスですか？</summary><p>文章の質問方法だけを教える講座ではありません。予約転記や集計など、実際の仕事が1つ回る仕組みを一緒につくります。</p></details>
+        <details><summary>相談したら契約しないといけませんか？</summary><p>いいえ。売り込みや、その場での契約はしません。無料枠を超える場合も、事前に説明し、ご本人の合意後に進めます。</p></details>
+      </div>
+    </div>
+  </section>
 
-<a class="btn main" href="https://lin.ee/66SwZs1">公式LINEで相談する</a>
-<a class="btn line" href="mailto:michinosaki.project@gmail.com">メールで相談する</a>
-</div>
-</div>
-</div></section>
+  <section class="final-cta" id="contact">
+    <div class="container final-inner">
+      <img src="icon_640.png" width="108" height="108" loading="lazy" alt="">
+      <p class="eyebrow">無料モニター｜先着3件</p>
+      <h2>まずは「何を減らせそうか」から、<br>話してみませんか。</h2>
+      <p>公式LINEまたは専用メールで「相談希望」とお送りください。</p>
+      <div class="hero-actions final-actions">
+        <a class="button button-primary" href="https://lin.ee/66SwZs1" target="_blank" rel="noopener">公式LINEで無料相談する</a>
+        <a class="button button-secondary on-dark" href="mailto:rakudaai.project@gmail.com?subject=%E3%83%A9%E3%82%AF%E3%81%A0AI%E7%84%A1%E6%96%99%E7%9B%B8%E8%AB%87&amp;body=%E7%9B%B8%E8%AB%87%E5%B8%8C%E6%9C%9B">メールで相談する</a>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer><div class="wrap">ラクだAI nagoya<br>ご相談の内容は、お手伝いの目的以外には使いません。</div></footer>
-<div class="fix"><a href="#contact">無料モニターに相談する</a></div>
+<footer>
+  <a class="brand footer-brand" href="#top"><img src="icon_640.png" width="40" height="40" alt=""><span>ラクだAI<small>NAGOYA</small></span></a>
+  <p>小さなお店の手作業を、ひとつずつラクに。</p>
+  <small>&copy; 2026 ラクだAI nagoya</small>
+</footer>
+
+<div class="mobile-cta"><a href="https://lin.ee/66SwZs1" target="_blank" rel="noopener">LINEで無料相談する</a></div>
 </body>
 </html>
